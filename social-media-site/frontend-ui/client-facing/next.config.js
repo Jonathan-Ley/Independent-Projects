@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     // domains: ["media.istockphoto.com"],
-      domains: ["d3ui957tjb5bqd.cloudfront.net"],
+    domains: ["encrypted-tbn0.gstatic.com"],
   },
 };
 
