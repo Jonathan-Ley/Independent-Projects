@@ -13,10 +13,19 @@ import org.springframework.data.annotation.Id;
 @Table(name = "employees")
 public class EmployeeEntity {
 
+    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id; //primary key
     private String firstName;
     private String lastName;
     private String emailId;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }
