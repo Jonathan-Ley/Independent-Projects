@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EmployeeService from "../services/EmployeeService";
+import Employee from "./Employee";
 
 const DisplayEmployees = () => {
   const navigate = useNavigate();
@@ -53,37 +54,7 @@ const DisplayEmployees = () => {
             {!loading && (
               <tbody>
                 {employees.map((employee) => (
-                  <tr key={employee.id}>
-                    <td className="text-left px-6 py-4 whitespace-normal">
-                      <div className="text-md text-gray-700">
-                        {employee.firstName}
-                      </div>
-                    </td>
-                    <td className="text-left px-6 py-4 whitespace-normal">
-                      <div className="text-md text-gray-700">
-                        {employee.lastName}
-                      </div>
-                    </td>
-                    <td className="text-left px-6 py-4 whitespace-normal">
-                      <div className="text-md text-gray-700">
-                        {employee.emailId}
-                      </div>
-                    </td>
-                    <td className="text-right px-6 py-4 whitespace-normal font-bold">
-                      <a
-                        href="#"
-                        className="text-yellow-600 hover:text-indigo-800 px-4"
-                      >
-                        Update
-                      </a>
-                      <a
-                        href="#"
-                        className="text-red-600 hover:text-indigo-800"
-                      >
-                        Delete
-                      </a>
-                    </td>
-                  </tr>
+                  <Employee employee={employee} key={employee.id} />
                 ))}
               </tbody>
             )}
