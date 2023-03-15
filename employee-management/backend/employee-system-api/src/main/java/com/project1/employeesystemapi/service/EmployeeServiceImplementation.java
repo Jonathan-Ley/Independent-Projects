@@ -59,8 +59,8 @@ public class EmployeeServiceImplementation implements EmployeeService {
     public Employee updateEmployee(Long id, Employee employee) {
         EmployeeEntity employeeEntity = employeeRepository.findById(id).get();
         employeeEntity.setEmailId(employee.getEmailId());
-        employeeEntity.setFirstName(employee.getLastName());
-        employeeEntity.setLastName(employee.getFirstName());
+        employeeEntity.setFirstName(employee.getFirstName());
+        employeeEntity.setLastName(employee.getLastName());
         employeeRepository.save(employeeEntity);
         return employee;
     }

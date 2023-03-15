@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DisplayEmployees from "./components/DisplayEmployees";
 import UpdateEmployee from "./components/UpdateEmployee";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/addEmployee" element={<AddEmployee />} />
           <Route path="/editEmployee/:id" element={<UpdateEmployee />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   );
