@@ -4,13 +4,14 @@ import EmployeeService from "../services/EmployeeService";
 
 const UpdateEmployee = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [employee, setEmployee] = useState({
     id: id,
     firstName: "",
     lastName: "",
     emailId: "",
   });
-  const navigate = useNavigate();
+  
 
   const handleChange = (e) => {
     const value = e.target.value;
