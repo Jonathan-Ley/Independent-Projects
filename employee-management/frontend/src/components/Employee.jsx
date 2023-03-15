@@ -1,6 +1,6 @@
 import React from "react";
 
-const Employee = ({ employee }) => {
+const Employee = ({ employee, deleteEmployee }) => {
   return (
     <tr key={employee.id}>
       <td className="text-left px-6 py-4 whitespace-normal">
@@ -21,9 +21,8 @@ const Employee = ({ employee }) => {
           Update
         </a>
         <a
-          href="#"
-          value="delete"
-          className="text-red-600 hover:text-indigo-800"
+          onClick={(e, id) => deleteEmployee(e, employee.id)}
+          className="text-red-600 hover:text-indigo-800 cursor-pointer"
         >
           Delete
         </a>
