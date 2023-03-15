@@ -1,26 +1,38 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import EmployeeService from "../services/EmployeeService";
 
-const AddEmployee = () => {
+const UpdateEmployee = () => {
+  const { id } = useParams();
   const [employee, setEmployee] = useState({
-    id: "",
+    id: id,
     firstName: "",
     lastName: "",
     emailId: "",
   });
-
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     const value = e.target.value;
     setEmployee({ ...employee, [e.target.name]: value });
   };
 
-  const saveEmployee = (e) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await EmployeeService.getEmployeeById(id);
+        setEmployee(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const updateEmployee = (e) => {
     e.preventDefault();
-    EmployeeService.saveEmployee(employee)
+    EmployeeService.updateEmployee(employee, id)
       .then((response) => {
-        console.log(response);
         navigate("/employeeList");
       })
       .catch((error) => {
@@ -28,21 +40,11 @@ const AddEmployee = () => {
       });
   };
 
-  const clear = (e) => {
-    e.preventDefault();
-    setEmployee({
-      id: "",
-      firstName: "",
-      lastName: "",
-      emailId: "",
-    });
-  };
-
   return (
     <div className="flex max-w-2xl mx-auto shadow border-b">
       <div className="px-8 py-8">
         <div className="font-Tahoma text-2xl tracking-wider">
-          <h1>Add New Employee</h1>
+          <h1>Update Employee</h1>
         </div>
         <div className="items-center justify-center h-14 w-full my-4">
           <label className="block text-gray-500 font-semibold">
@@ -78,16 +80,16 @@ const AddEmployee = () => {
         </div>
         <div className="items-center justify-center h-14 w-full mt-5 space-x-4 pt-4">
           <button
-            onClick={saveEmployee}
+            onClick={updateEmployee}
             className="rounded text-white font-semibold bg-emerald-500 hover:bg-emerald-700 py-2 px-6 cursor-pointer"
           >
-            Save
+            Update
           </button>
           <button
-            onClick={clear}
-            className="rounded text-white font-semibold bg-red-400 hover:bg-red-700 py-2 px-6 cursor-pointer"
+            onClick={() => navigate("/employeeList")}
+            className="rounded text-white font-semibold bg-red-400 hover:bg-red-700 py-2 px-6"
           >
-            Clear
+            Cancel
           </button>
         </div>
       </div>
@@ -95,4 +97,4 @@ const AddEmployee = () => {
   );
 };
 
-export default AddEmployee;
+export default UpdateEmployee;
