@@ -13,10 +13,18 @@ const Employee = ({ employee }) => {
         <div className="text-md text-gray-700">{employee.emailId}</div>
       </td>
       <td className="text-right px-6 py-4 whitespace-normal font-bold">
-        <a href="#" className="text-yellow-600 hover:text-indigo-800 px-4">
+        <a
+          href="#"
+          value="update"
+          className="text-yellow-600 hover:text-indigo-800 px-4"
+        >
           Update
         </a>
-        <a href="#" className="text-red-600 hover:text-indigo-800">
+        <a
+          href="#"
+          value="delete"
+          className="text-red-600 hover:text-indigo-800"
+        >
           Delete
         </a>
       </td>

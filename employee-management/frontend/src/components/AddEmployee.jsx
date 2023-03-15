@@ -26,6 +26,15 @@ const AddEmployee = () => {
         console.log(error);
       });
   };
+  const clear = (e) => {
+    e.preventDefault();
+    setEmployee({
+      id: "",
+      firstName: "",
+      lastName: "",
+      emailId: "",
+    });
+  };
 
   return (
     <div className="flex max-w-2xl mx-auto shadow border-b">
@@ -72,7 +81,10 @@ const AddEmployee = () => {
           >
             Save
           </button>
-          <button className="rounded text-white font-semibold bg-red-400 hover:bg-red-700 py-2 px-6">
+          <button
+            onClick={clear}
+            className="rounded text-white font-semibold bg-red-400 hover:bg-red-700 py-2 px-6"
+          >
             Clear
           </button>
         </div>
