@@ -19,7 +19,7 @@ public class EmployeeEntity {
     private long id; //primary key
     private String firstName;
     private String lastName;
-    private String emailId;
+    private String email;
 
     public void setId(Long id) {
         this.id = id;

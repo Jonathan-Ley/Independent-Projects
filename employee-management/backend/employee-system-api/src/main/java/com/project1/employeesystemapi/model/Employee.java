@@ -11,5 +11,5 @@ public class Employee {
     private long id; //primary key
     private String firstName;
     private String lastName;
-    private String emailId;
+    private String email;
 }

@@ -34,7 +34,7 @@ public class EmployeeServiceImplementation implements EmployeeService {
                         employee.getId(),
                         employee.getFirstName(),
                         employee.getLastName(),
-                        employee.getEmailId()))
+                        employee.getEmail()))
                 .collect(Collectors.toList());
         return employees;
     }
@@ -58,7 +58,7 @@ public class EmployeeServiceImplementation implements EmployeeService {
     @Override
     public Employee updateEmployee(Long id, Employee employee) {
         EmployeeEntity employeeEntity = employeeRepository.findById(id).get();
-        employeeEntity.setEmailId(employee.getEmailId());
+        employeeEntity.setEmail(employee.getEmail());
         employeeEntity.setFirstName(employee.getFirstName());
         employeeEntity.setLastName(employee.getLastName());
         employeeRepository.save(employeeEntity);

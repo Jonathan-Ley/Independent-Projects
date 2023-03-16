@@ -55,7 +55,7 @@ const DisplayEmployees = () => {
                   Last Name
                 </th>
                 <th className="text-left font-bold text-gray-800 uppercase tracking-wider py-3 px-6">
-                  Email ID Name
+                  Email
                 </th>
                 <th className="text-right font-bold text-gray-800 uppercase tracking-wider py-3 px-6">
                   Actions

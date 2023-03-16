@@ -17,7 +17,7 @@ const Employee = ({ employee, deleteEmployee }) => {
         <div className="text-md text-gray-700">{employee.lastName}</div>
       </td>
       <td className="text-left px-6 py-4 whitespace-normal">
-        <div className="text-md text-gray-700">{employee.emailId}</div>
+        <div className="text-md text-gray-700">{employee.email}</div>
       </td>
       <td className="text-right px-6 py-4 whitespace-normal font-bold">
         <a

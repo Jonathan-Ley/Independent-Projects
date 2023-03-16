@@ -7,7 +7,7 @@ const AddEmployee = () => {
     id: "",
     firstName: "",
     lastName: "",
-    emailId: "",
+    email: "",
   });
 
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ const AddEmployee = () => {
       id: "",
       firstName: "",
       lastName: "",
-      emailId: "",
+      email: "",
     });
   };
 
@@ -70,8 +70,8 @@ const AddEmployee = () => {
           <label className="block text-gray-500 font-semibold">Email</label>
           <input
             type="email"
-            name="emailId"
-            value={employee.emailId}
+            name="email"
+            value={employee.email}
             onChange={(e) => handleChange(e)}
             className="h-10 w-96 border mt-2 px-4 py-4"
           ></input>
