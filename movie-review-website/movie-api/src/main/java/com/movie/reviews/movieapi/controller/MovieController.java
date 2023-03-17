@@ -1,7 +1,7 @@
 package com.movie.reviews.movieapi.controller;
 
 import com.movie.reviews.movieapi.model.Movie;
-import com.movie.reviews.movieapi.service.MovieService;
+import com.movie.reviews.movieapi.service.MovieServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,7 @@ import java.util.List;
 public class MovieController {
 
     @Autowired
-    private MovieService movieService;
+    private MovieServiceImplementation movieService;
 
     @GetMapping
     public ResponseEntity<List<Movie>> getAllMovies() {
