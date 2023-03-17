@@ -23,24 +23,19 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
+    //CREATE
     @PostMapping("/employees")
     public Employee createEmployee(@RequestBody Employee employee) {
         return employeeService.createEmployee(employee);
     }
 
+    //RETRIEVE
     @GetMapping("/employees")
     public List<Employee> getAllEmployees() {
         return employeeService.getAllEmployees();
     }
 
-    @DeleteMapping("/employees/{id}")
-    public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable Long id) {
-        boolean deleted = employeeService.deleteEmployee(id);
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted",deleted);
-        return ResponseEntity.ok(response);
-    }
-
+    //RETRIEVE BY ID
     @GetMapping("/employees/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
         Employee employee;
@@ -48,9 +43,19 @@ public class EmployeeController {
         return ResponseEntity.ok(employee);
     }
 
+    //UPDATE
     @PutMapping("/employees/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
         employee = employeeService.updateEmployee(id, employee);
         return ResponseEntity.ok(employee);
+    }
+
+    //DELETE
+    @DeleteMapping("/employees/{id}")
+    public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable Long id) {
+        boolean deleted = employeeService.deleteEmployee(id);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted",deleted);
+        return ResponseEntity.ok(response);
     }
 }

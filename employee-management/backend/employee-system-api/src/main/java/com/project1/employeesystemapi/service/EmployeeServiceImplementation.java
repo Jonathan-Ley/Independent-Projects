@@ -17,6 +17,7 @@ public class EmployeeServiceImplementation implements EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
+    //CREATE
     @Override
     public Employee createEmployee(Employee employee) {
         EmployeeEntity employeeEntity = new EmployeeEntity();
@@ -25,6 +26,7 @@ public class EmployeeServiceImplementation implements EmployeeService {
         return employee;
     }
 
+    //GET ALL EMPLOYEES
     @Override
     public List<Employee> getAllEmployees() {
         List<EmployeeEntity> employeeEntities = employeeRepository.findAll();
@@ -39,13 +41,7 @@ public class EmployeeServiceImplementation implements EmployeeService {
         return employees;
     }
 
-    @Override
-    public boolean deleteEmployee(Long id) {
-        EmployeeEntity employee = employeeRepository.findById(id).get();
-        employeeRepository.delete(employee);
-        return true;
-    }
-
+    //GET EMPLOYEE BY PARAMETER
     @Override
     public Employee getEmployeeById(Long id) {
         EmployeeEntity employeeEntity = employeeRepository.findById(id).get();
@@ -63,5 +59,13 @@ public class EmployeeServiceImplementation implements EmployeeService {
         employeeEntity.setLastName(employee.getLastName());
         employeeRepository.save(employeeEntity);
         return employee;
+    }
+
+    //DELETE
+    @Override
+    public boolean deleteEmployee(Long id) {
+        EmployeeEntity employee = employeeRepository.findById(id).get();
+        employeeRepository.delete(employee);
+        return true;
     }
 }
