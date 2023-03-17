@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service //responsible for the business logic & uses repository to work with the db
 public class MovieService {
     @Autowired
     private MovieRepository movieRepository;

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@RestController //responsible for the responses from the user
 @RequestMapping("/api/v1/movies")
 public class MovieController {
 
