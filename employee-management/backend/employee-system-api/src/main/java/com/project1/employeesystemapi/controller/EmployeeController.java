@@ -13,7 +13,7 @@ import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("api/v1/")
+@RequestMapping("api/")
 public class EmployeeController {
 
     @Autowired
@@ -29,13 +29,13 @@ public class EmployeeController {
         return employeeService.createEmployee(employee);
     }
 
-    //RETRIEVE
+    //GET
     @GetMapping("/employees")
     public List<Employee> getAllEmployees() {
         return employeeService.getAllEmployees();
     }
 
-    //RETRIEVE BY ID
+    //GET BY ID
     @GetMapping("/employees/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
         Employee employee;
