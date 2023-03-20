@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AddEmployee from "./AddEmployee";
+import AddEmployee from "../employee/AddEmployee";
 import NavBar from "./NavBar";
-import DisplayEmployees from "./DisplayEmployees";
-import UpdateEmployee from "./UpdateEmployee";
+import DisplayEmployees from "../employee/DisplayEmployees";
+import UpdateEmployee from "../employee/UpdateEmployee";
 import Footer from "./Footer";
 import ErrorPage from "./ErrorPage";
 

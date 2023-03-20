@@ -1,4 +1,4 @@
-import RoutePath from "./components/RoutePath";
+import RoutePath from "./components/navigation/RoutePath";
 
 function App() {
   return (
