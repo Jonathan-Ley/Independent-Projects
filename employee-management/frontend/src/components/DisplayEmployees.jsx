@@ -5,7 +5,7 @@ import Employee from "./Employee";
 
 const DisplayEmployees = () => {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true); //used to handle loading & check if data is loaded
+  const [loading, setLoading] = useState(true); //use to handle loading & check if data is loaded
   const [employees, setEmployees] = useState(null);
 
   useEffect(() => {
