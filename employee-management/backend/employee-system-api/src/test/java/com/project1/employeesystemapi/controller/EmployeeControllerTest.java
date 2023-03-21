@@ -36,14 +36,6 @@ class EmployeeControllerTest {
     }
 
     @Test
-    @Disabled("TODO: Complete this test")
-    void testCreateEmployee2() {
-
-        EmployeeController employeeController = new EmployeeController(null);
-        employeeController.createEmployee(new Employee(1L, "Jane", "Doe", "jane.doe@example.org"));
-    }
-
-    @Test
     void testGetAllEmployees() {
 
         EmployeeRepository employeeRepository = mock(EmployeeRepository.class);
@@ -51,12 +43,6 @@ class EmployeeControllerTest {
         assertTrue(
                 (new EmployeeController(new EmployeeServiceImplementation(employeeRepository))).getAllEmployees().isEmpty());
         verify(employeeRepository).findAll();
-    }
-
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testGetAllEmployees2() {
-        (new EmployeeController(null)).getAllEmployees();
     }
 
     @Test
@@ -82,16 +68,6 @@ class EmployeeControllerTest {
     }
 
     @Test
-    @Disabled("TODO: Complete this test")
-    void testDeleteEmployee2() {
-
-        EmployeeRepository employeeRepository = mock(EmployeeRepository.class);
-        doNothing().when(employeeRepository).delete((EmployeeEntity) any());
-        when(employeeRepository.findById((Long) any())).thenReturn(Optional.empty());
-        (new EmployeeController(new EmployeeServiceImplementation(employeeRepository))).deleteEmployee(1L);
-    }
-
-    @Test
     void testGetEmployeeById() {
 
         EmployeeEntity employeeEntity = new EmployeeEntity();
@@ -112,15 +88,6 @@ class EmployeeControllerTest {
         assertEquals("Jane", body.getFirstName());
         assertEquals("jane.doe@example.org", body.getEmail());
         verify(employeeRepository).findById((Long) any());
-    }
-
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testGetEmployeeById2() {
-
-        EmployeeRepository employeeRepository = mock(EmployeeRepository.class);
-        when(employeeRepository.findById((Long) any())).thenReturn(Optional.empty());
-        (new EmployeeController(new EmployeeServiceImplementation(employeeRepository))).getEmployeeById(1L);
     }
 
     @Test
@@ -150,23 +117,6 @@ class EmployeeControllerTest {
         assertEquals(200, actualUpdateEmployeeResult.getStatusCodeValue());
         verify(employeeRepository).save((EmployeeEntity) any());
         verify(employeeRepository).findById((Long) any());
-    }
-
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testUpdateEmployee2() {
-
-        EmployeeEntity employeeEntity = new EmployeeEntity();
-        employeeEntity.setEmail("jane.doe@example.org");
-        employeeEntity.setFirstName("Jane");
-        employeeEntity.setId(1L);
-        employeeEntity.setLastName("Doe");
-        EmployeeRepository employeeRepository = mock(EmployeeRepository.class);
-        when(employeeRepository.save((EmployeeEntity) any())).thenReturn(employeeEntity);
-        when(employeeRepository.findById((Long) any())).thenReturn(Optional.empty());
-        EmployeeController employeeController = new EmployeeController(
-                new EmployeeServiceImplementation(employeeRepository));
-        employeeController.updateEmployee(1L, new Employee(1L, "Jane", "Doe", "jane.doe@example.org"));
     }
 }
 
