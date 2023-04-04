@@ -11,6 +11,7 @@ const AddEmployee = () => {
   });
 
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     const value = e.target.value;
     setEmployee({ ...employee, [e.target.name]: value });

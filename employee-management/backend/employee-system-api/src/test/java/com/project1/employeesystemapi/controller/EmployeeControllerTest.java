@@ -4,7 +4,6 @@ import com.project1.employeesystemapi.entity.EmployeeEntity;
 import com.project1.employeesystemapi.model.Employee;
 import com.project1.employeesystemapi.repository.EmployeeRepository;
 import com.project1.employeesystemapi.service.EmployeeServiceImplementation;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 
@@ -21,15 +20,15 @@ class EmployeeControllerTest {
     void testCreateEmployee() {
 
         EmployeeEntity employeeEntity = new EmployeeEntity();
-        employeeEntity.setEmail("jane.doe@example.org");
-        employeeEntity.setFirstName("Jane");
         employeeEntity.setId(1L);
-        employeeEntity.setLastName("Doe");
+        employeeEntity.setFirstName("Test");
+        employeeEntity.setLastName("Testing");
+        employeeEntity.setEmail("test@test.org");
         EmployeeRepository employeeRepository = mock(EmployeeRepository.class);
         when(employeeRepository.save((EmployeeEntity) any())).thenReturn(employeeEntity);
         EmployeeController employeeController = new EmployeeController(
                 new EmployeeServiceImplementation(employeeRepository));
-        Employee employee = new Employee(1L, "Jane", "Doe", "jane.doe@example.org");
+        Employee employee = new Employee(1L, "Test", "Testing", "test@test.org");
 
         assertSame(employee, employeeController.createEmployee(employee));
         verify(employeeRepository).save((EmployeeEntity) any());
@@ -49,10 +48,10 @@ class EmployeeControllerTest {
     void testDeleteEmployee() {
 
         EmployeeEntity employeeEntity = new EmployeeEntity();
-        employeeEntity.setEmail("jane.doe@example.org");
-        employeeEntity.setFirstName("Jane");
         employeeEntity.setId(1L);
-        employeeEntity.setLastName("Doe");
+        employeeEntity.setFirstName("Test");
+        employeeEntity.setLastName("Test");
+        employeeEntity.setEmail("test@test.org");
         Optional<EmployeeEntity> ofResult = Optional.of(employeeEntity);
         EmployeeRepository employeeRepository = mock(EmployeeRepository.class);
         doNothing().when(employeeRepository).delete((EmployeeEntity) any());
@@ -71,10 +70,10 @@ class EmployeeControllerTest {
     void testGetEmployeeById() {
 
         EmployeeEntity employeeEntity = new EmployeeEntity();
-        employeeEntity.setEmail("jane.doe@example.org");
-        employeeEntity.setFirstName("Jane");
         employeeEntity.setId(1L);
-        employeeEntity.setLastName("Doe");
+        employeeEntity.setFirstName("Test");
+        employeeEntity.setLastName("Testing");
+        employeeEntity.setEmail("test@test.org");
         EmployeeRepository employeeRepository = mock(EmployeeRepository.class);
         when(employeeRepository.findById((Long) any())).thenReturn(Optional.of(employeeEntity));
         ResponseEntity<Employee> actualEmployeeById = (new EmployeeController(
@@ -84,9 +83,9 @@ class EmployeeControllerTest {
         assertEquals(200, actualEmployeeById.getStatusCodeValue());
         Employee body = actualEmployeeById.getBody();
         assertEquals(1L, body.getId());
-        assertEquals("Doe", body.getLastName());
-        assertEquals("Jane", body.getFirstName());
-        assertEquals("jane.doe@example.org", body.getEmail());
+        assertEquals("Test", body.getFirstName());
+        assertEquals("Testing", body.getLastName());
+        assertEquals("test@test.org", body.getEmail());
         verify(employeeRepository).findById((Long) any());
     }
 
@@ -94,24 +93,24 @@ class EmployeeControllerTest {
     void testUpdateEmployee() {
 
         EmployeeEntity employeeEntity = new EmployeeEntity();
-        employeeEntity.setEmail("jane.doe@example.org");
-        employeeEntity.setFirstName("Jane");
         employeeEntity.setId(1L);
-        employeeEntity.setLastName("Doe");
+        employeeEntity.setFirstName("Test");
+        employeeEntity.setLastName("Testing");
+        employeeEntity.setEmail("test@test.org");
         Optional<EmployeeEntity> ofResult = Optional.of(employeeEntity);
 
         EmployeeEntity employeeEntity1 = new EmployeeEntity();
-        employeeEntity1.setEmail("jane.doe@example.org");
-        employeeEntity1.setFirstName("Jane");
         employeeEntity1.setId(1L);
-        employeeEntity1.setLastName("Doe");
+        employeeEntity1.setFirstName("John");
+        employeeEntity1.setLastName("Ripper");
+        employeeEntity1.setEmail("ripper@test.org");
         EmployeeRepository employeeRepository = mock(EmployeeRepository.class);
         when(employeeRepository.save((EmployeeEntity) any())).thenReturn(employeeEntity1);
         when(employeeRepository.findById((Long) any())).thenReturn(ofResult);
         EmployeeController employeeController = new EmployeeController(
                 new EmployeeServiceImplementation(employeeRepository));
         ResponseEntity<Employee> actualUpdateEmployeeResult = employeeController.updateEmployee(1L,
-                new Employee(1L, "Jane", "Doe", "jane.doe@example.org"));
+                new Employee(1L, "John", "Ripper", "ripper@test.org"));
         assertTrue(actualUpdateEmployeeResult.hasBody());
         assertTrue(actualUpdateEmployeeResult.getHeaders().isEmpty());
         assertEquals(200, actualUpdateEmployeeResult.getStatusCodeValue());

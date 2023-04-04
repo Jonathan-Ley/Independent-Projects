@@ -3,6 +3,7 @@ package com.project1.employeesystemapi.service;
 import com.project1.employeesystemapi.entity.EmployeeEntity;
 import com.project1.employeesystemapi.model.Employee;
 import com.project1.employeesystemapi.repository.EmployeeRepository;
+import org.hibernate.service.NullServiceException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ public class EmployeeServiceImplementation implements EmployeeService {
     private EmployeeRepository employeeRepository;
 
     public EmployeeServiceImplementation(EmployeeRepository employeeRepository) {
+        if (employeeRepository == null) { throw new NullPointerException();} //to validate for developer if a repo is empty
         this.employeeRepository = employeeRepository;
     }
 
