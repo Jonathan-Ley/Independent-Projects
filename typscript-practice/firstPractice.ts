@@ -15,10 +15,26 @@ function generateEmail(input: Person, force?: boolean): string | undefined {
   }
 }
 
-console.log(
-  generateEmail({
-    firstName: "Jonathan",
-    lastName: "Smith",
-    isVisitor: false,
-  })
-);
+function isPerson(potentialPerson: any): boolean {
+  if ("firstName" in potentialPerson && "lastName" in potentialPerson) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function printEmailIfPerson(potentialPerson: any): void {
+  if (isPerson(potentialPerson)) {
+    console.log(
+      "The information provided is a person & here is the email: " +
+        generateEmail(potentialPerson)
+    );
+  } else {
+    console.log("Is not a valid person!");
+  }
+}
+
+printEmailIfPerson({
+  firstName: "test",
+  lastName: "testing",
+});
