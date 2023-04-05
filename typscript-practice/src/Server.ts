@@ -17,3 +17,4 @@ someServer.startServer();
 //can use any as a way to access private variables of a class
 const port1 = (someServer as any).port;
 console.log(port1);
+//using interfaces promotes loose coupling & inheritance creates tight coupling

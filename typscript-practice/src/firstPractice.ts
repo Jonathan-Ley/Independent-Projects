@@ -1,9 +1,9 @@
-interface Person {
-  firstName: string;
-  lastName: string;
-  job?: job; //the ? allows optional parameter if wanted
-  isVisitor?: boolean;
-}
+// interface Person {
+//   firstName: string;
+//   lastName: string;
+//   job?: job; //the ? allows optional parameter if wanted
+//   isVisitor?: boolean;
+// }
 
 type job = "Engineer" | "Programmer";
 
