@@ -3,7 +3,7 @@ function generateEmail(input, force) {
         return undefined;
     }
     else {
-        return "".concat(input.firstName, ".").concat(input.lastName, "@test.org");
+        return `${input.firstName}.${input.lastName}@test.org`;
     }
 }
 function isPerson(potentialPerson) {
