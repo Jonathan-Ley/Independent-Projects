@@ -1,6 +1,6 @@
 class Server {
-  port: number;
-  address: string;
+  private port: number;
+  private address: string;
 
   constructor(port: number, address: string) {
     this.port = port;
@@ -14,3 +14,6 @@ class Server {
 
 const someServer = new Server(8080, "localhost3000");
 someServer.startServer();
+//can use any as a way to access private variables of a class
+const port1 = (someServer as any).port;
+console.log(port1);
