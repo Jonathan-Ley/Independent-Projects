@@ -1,5 +1,5 @@
 import * as cdk from "aws-cdk-lib";
-import { Duration } from "aws-cdk-lib";
+import { CfnOutput, Duration } from "aws-cdk-lib";
 import { Bucket, CfnBucket } from "aws-cdk-lib/aws-s3";
 import { Construct } from "constructs";
 //contains the actual cloud formation stacks
@@ -37,14 +37,21 @@ export class CdkPracticeStack extends cdk.Stack {
       },
     });
 
+    const duration = new cdk.CfnParameter(this, "duration", {
+      default: 6,
+      minValue: 1,
+      maxValue: 10,
+      type: "Number",
+    });
+
     //L2 Bucket Construct
     //a way to have objects be removed from the bucket after a certain time window
     //this example shows expiration after 2 days
     //already implies the rule status being enabled
-    new Bucket(this, "MyL2Bucket", {
+    const myL2Bucket = new Bucket(this, "MyL2Bucket", {
       lifecycleRules: [
         {
-          expiration: Duration.days(2),
+          expiration: Duration.days(duration.valueAsNumber),
         },
       ],
     });
